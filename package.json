@@ -1,0 +1,23 @@
+{
+  "name": "ratetune",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "author": "ocean",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "connect-session-sequelize": "^7.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "passport": "^0.4.1",
+    "passport-identificator": "^1.0.2",
+    "pug": "^3.0.0",
+    "sequelize": "^6.3.5",
+    "sqlite3": "^5.0.0"
+  }
+}
