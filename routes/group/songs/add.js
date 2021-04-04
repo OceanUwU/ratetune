@@ -7,7 +7,6 @@ module.exports = async function addSong(socket, io, group, details) {
     details.slot = Number(details.slot); //convert string to number
     if (!Number.isInteger(details.slot)) return; //if the slot is not an integer
     if (details.slot < 1 || details.slot > group.slots) return; //if the slot provided is not a slot in the group
-    console.log(await db.Song.count({where: {user: socket.request.user.id, group: group.id, slot: details.slot}}))
     if (await db.Song.count({where: {user: socket.request.user.id, group: group.id, slot: details.slot}}) > 0) return; //if the slot provided has already been used by the user
 
     //validate name, artist, note

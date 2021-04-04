@@ -12,8 +12,6 @@ router.post('/', (req, res) => {
         fetch(`${cfg.identificatorHost}/un/${req.body.user.replace('#', '%23')}/json?f=1`) //fetch the user's ID from identificator
             .then(res => res.json())
             .then(async user => {
-                console.log(user)
-
                 if (user == null) //if no identificator user could be found
                     return res.render('group/invite', {error: 'No user could be found by that username.'});
         
