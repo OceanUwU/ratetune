@@ -1,0 +1,48 @@
+extends ../lay
+
+block title
+    | Group menu - #{group.name}
+
+append head
+    style.
+        .tooltip-inner {
+            background-color: transparent;
+        }
+
+        .arrow::before {
+            border-top-color: transparent !important;
+        }
+
+block content
+    h1.text-center= group.name
+    h3 Song slots per user: #[span#slots= group.slots]
+    h3
+        span Owned by 
+        img#ownerAvatar
+        span#ownerName= group.owner
+    if group.owner == req.user.id
+        span
+            span (That's you!) Owner actions: 
+            button.btn.btn-sm.btn-secondary(onclick="addSlot()") Add slot
+            a.btn.btn-sm.btn-secondary(href="invite") Invite user
+            button.btn.btn-sm.btn-danger(onclick="deleteGroup()") Delete group
+    else 
+        button.btn.btn-sm.btn-danger(onclick="leaveGroup()") Leave group
+    hr
+    div.col.text-center
+        p: a.btn.btn-lg.btn-primary(href="songs") Go to songs
+    hr
+    div.col.text-center
+        h3 Members
+        each member in members
+            img.member.rounded.border.border-dark(data-id=member.identificator)
+    if invitations.length > 0
+        hr
+        div.col.text-center
+            h3 Outgoing invitations 
+            each invitation in invitations
+                img.member.rounded.border.border-dark(data-id=invitation.user)
+
+
+append js
+    script(src="/js/group/home.js")

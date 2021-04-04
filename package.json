@@ -14,10 +14,15 @@
     "connect-session-sequelize": "^7.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "express-slash": "^2.0.1",
+    "http": "0.0.1-security",
+    "node-fetch": "^2.6.1",
     "passport": "^0.4.1",
     "passport-identificator": "^1.0.2",
+    "passport.socketio": "^3.7.0",
     "pug": "^3.0.0",
     "sequelize": "^6.3.5",
+    "socket.io": "^4.0.1",
     "sqlite3": "^5.0.0"
   }
 }

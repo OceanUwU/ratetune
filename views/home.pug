@@ -1,0 +1,14 @@
+extends ./lay
+
+block title
+    | Home
+
+block content
+    h1.text-center RateTune
+    p RateTune is a site to help a group of people find out what music they all like.
+    p Everyone is invited to a group, where they can suggest songs and rate the songs that others have chosen from 0 to 10.
+    p The best way to use RateTune is to listen to the group's songs together while rating them. If you can't see each other, you can use something like #[a(href="https://groovy.bot") Groovy].
+    p To start, go to #[a(href="/groups") groups]. Be prepared to be brutal with your opinion.
+
+append js
+    script(src="/js/home.js")

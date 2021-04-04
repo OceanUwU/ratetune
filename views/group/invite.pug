@@ -1,0 +1,12 @@
+extends ../lay
+
+block title
+    | Invite to #{group.name}
+
+block content
+    h1.text-center Invite a member to #{group.name}
+    hr
+    form(action="" method="post")
+        input.form-control.form-control-lg.text-center(type="text" name="user" placeholder="Username#DISCRIM" minlength=1 required)
+        hr
+        div.col.text-center: button.btn.btn-lg.btn-info(type="submit") Invite

@@ -1,0 +1,12 @@
+extends ../lay
+
+block title
+    | Creating a group
+
+block content
+    h1.text-center Create a group
+    hr
+    form(action="" method="post")
+        input.form-control.form-control-lg.text-center(type="text" name="name" placeholder="Group name (this cannot be changed)" minlength=1 maxlength=100 required)
+        hr
+        div.col.text-center: button.btn.btn-lg.btn-primary(type="submit") Create

@@ -1,0 +1,29 @@
+extends ../lay
+
+block title
+    | Invitations
+
+append head
+    style.
+        .card {
+            margin-bottom: 16px;
+        }
+
+block content
+    h1 Invitations
+    if invitations.length > 0
+        each invitation in invitations
+            div.card.text-white.bg-dark
+                div.card-header= invitation.createdAt.toDateString()
+                div.card-body
+                    div.card-title Invitation to #[span.font-weight-bold= invitation.group.name] from #[span.font-weight-bold.inviter= invitation.group.owner]
+                    div.card-text
+                        form(action="" method="post")
+                            input(type="hidden" name="group" value=invitation.group.id)
+                            button.btn.btn-success(type="submit" data-toggle="tooltip" title="Accept" name="response" value="a") ✓ 
+                            button.btn.btn-danger(type="submit" data-toggle="tooltip" title="Reject" name="response" value="r") ✕
+    else
+        p You're all caught up on your invitations! If you're waiting for someone to invite you, refresh this page once they've invited you.
+
+append js
+    script(src="/js/groups/invitations.js")

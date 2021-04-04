@@ -1,0 +1,54 @@
+doctype html
+html
+    head
+        block head
+            meta(charset="utf-8")
+            meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+            link(rel="icon" href="/icon.png")
+
+            link(rel="stylesheet" href="/bootstrap/bootstrap.min.css")
+            link(rel="stylesheet" href="/stylesheet.css")
+
+            title
+                block title
+                |  | RateTune
+    
+    body
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.sticky-top
+            a.navbar-brand(href="/")
+                img.d-inline-block.align-top(src="/icon.png" alt="RT" width=32 loading="lazy")
+            button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"): span.navbar-toggler-icon
+            div.collapse.navbar-collapse#navbarSupportedContent
+                ul.navbar-nav.mr-auto
+                    li.nav-item: a.nav-link(href="https://github.com/975miles/ratetune"): img(src="/github.png" height="24")
+                    li.nav-item: a.nav-link(href="/groups") Groups
+                if (req.user != undefined)
+                    button.btn.btn-outline-light.dropdown-toggle(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 4px 8px")
+                        img.rounded.border.border-dark(src=req.user.avatarURL+"?size=20&nt" style="margin-top:-3px")
+                        span(style="margin-left:3px")
+                            span= req.user.dName.name
+                            span.text-muted(style="font-size: 0.8em")
+                                span #
+                                span=req.user.dName.discrim
+                    div.dropdown-menu.dropdown-menu-right
+                        a.dropdown-item(href=`${cfg.identificatorHost}/edit-profile` target="_blank") Edit profile
+                        div.dropdown-divider
+                        a.dropdown-item(href="/logout") Logout
+                else
+                    a.btn.btn-light(href="/login?returnTo="+req.originalUrl style="padding: 4px 8px") Login
+
+        div.container-fluid
+            block content
+                p no content here!!!
+        
+        script(src="https://code.jquery.com/jquery-3.5.1.js")
+        script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js")
+        script(src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js")
+        script(src="/js/main.js")
+        script.
+            var identificatorHost = !{`'${cfg.identificatorHost}'`};
+        if error
+            script.
+                bootbox.alert(!{`'${error}'`});
+        block js

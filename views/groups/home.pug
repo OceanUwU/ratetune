@@ -1,0 +1,20 @@
+extends ../lay
+
+block title
+    | Groups
+
+block content
+    h1.text-center Your Groups
+    a.btn.btn-secondary(href="invitations")
+        | Invitations
+        if invitations > 0
+            = ' '
+            span.badge.badge-pill.badge-info= invitations
+    a.btn.btn-secondary(href="create") Create Group
+    hr
+    div.col.text-center
+        if groups.length > 0
+            each group in groups
+                h3: a(href=`/g/${group.id}`)= group.name
+        else
+            p You're not in any groups. Ask to be invited to one or create one yourself.

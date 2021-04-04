@@ -1,0 +1,109 @@
+extends ../../lay
+
+block title
+    | Songs - #{group.name}
+
+append head
+    style.
+        #songTable {
+            display: block;
+            height: 70vh;
+            overflow-y: scroll;
+        }
+
+        thead, tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        thead {
+            width: calc( 100% - 1em )
+        }
+
+        tr:hover {
+            color: inherit !important;
+        }
+
+        th {
+            cursor: pointer;
+            user-select: none;
+        }
+
+block content
+    h1.text-center #[a(href="../")= group.name]'s songs
+    table.table.table-hover.table-dark
+        thead
+            tr
+                th(name="name") Title #[span]
+                th(name="artist") Artist #[span]
+                th(name="slot") Slot #[span]
+                th(name="user") Chooser #[span]
+                th(name="score") Score #[span]
+        tbody#songTable
+    hr
+    div.col.text-center
+        button.btn.btn-lg.btn-primary(onclick="addSongDetails()") Add Song
+    hr
+    div.col.text-center
+        h3 Users here right now
+        div#users
+    
+    div.d-none#addSongDetails
+        h4 Add song: Enter details
+
+        hr
+
+        .form-group
+            label Slot
+            select.form-control.custom-select(name="slot" required)
+        
+        .form-group
+            label Name
+            input.form-control(type="text" name="name" placeholder="Song name" maxlength=100 required)
+
+        .form-group
+            label Artist
+            input.form-control(type="text" name="artist" placeholder="Song artist" maxlength=100 required)
+
+        .form-group
+            label Song links (optional)
+            .input-group
+                .input-group-prepend: .input-group-text: img(src="/spotify.png" width=20)
+                input.form-control(type="text" name="spotifyURL" placeholder="Spotify link" maxlength=100)
+            .input-group
+                .input-group-prepend: .input-group-text: img(src="/youtube.png" width=20)
+                input.form-control(type="text" name="youtubeURL" placeholder="Youtube link" maxlength=100)
+            .input-group
+                .input-group-prepend: .input-group-text: img(src="/soundcloud.png" width=20)
+                input.form-control(type="text" name="soundcloudURL" placeholder="Soundcloud link" maxlength=100)
+        
+        .form-group
+            label Note (optional)
+            input.form-control(type="text" name="note" placeholder="Anything you want to say about this song?" maxlength=100)
+    
+    div.d-none#rateSongMenu
+        h4 Rating "#[span.song-artist] - #[span.song-name]"
+
+        hr
+
+        .form-group
+            label Score
+            .input-group
+                input.form-control.form-control-range(type="range" min=0 max=10 value=5 step=1)
+                .input-group-append: input.form-control(type="number" name="rating" min=0 max=10 value=5 step=0.1 style="width:80px")
+        
+        .form-group
+            label Note (optional)
+            input.form-control(type="text" name="note" placeholder="Anything you want to say about this song?" maxlength=100)
+
+append js
+    script.
+        var userID = !{JSON.stringify(req.user.id)};
+        var songs = !{JSON.stringify(songs)};
+        var names = !{JSON.stringify(names)};
+        var slots = !{group.slots};
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js")
+    script(src="/js/group/songs/home.js")
+    script(src="/js/group/songs/add.js")
+    script(src="/js/group/songs/rate.js")
