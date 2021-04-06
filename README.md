@@ -1,6 +1,6 @@
 # open-source-stories
 
-### setup
+## setup
 1. `npm ci` or `npm install`
 2. `npx sequelize db:migrate`
 3. create a file called `cfg.json`, paste the following contents into it, and edit it to your needs
@@ -13,3 +13,6 @@
 }
 ```
 4. `npm start` or `nodemon` if youre developing
+
+## maybe todo one day
+- group invite links
