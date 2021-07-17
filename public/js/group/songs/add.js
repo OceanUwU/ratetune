@@ -18,7 +18,7 @@ function addSongDetails() {
                     label: "Add",
                     callback: () => {
                         let details = {};
-                        for (let i of ['name', 'artist', 'slot', 'spotifyURL', 'youtubeURL', 'soundcloudURL', 'note'])
+                        for (let i of ['name', 'artist', 'slot', 'spotifyURL', 'youtubeURL', 'soundcloudURL', 'otherURL', 'note'])
                             details[i] = diagContent.find(`[name="${i}"]`).val();
                         socket.emit('add', details);
                     }

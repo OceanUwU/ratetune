@@ -16,7 +16,7 @@ module.exports = async function addSong(socket, io, group, details) {
 
     //validate links
     let links = {};
-    for (let i of ['spotify', 'youtube', 'soundcloud']) { //for each possible site
+    for (let i of ['spotify', 'youtube', 'soundcloud', 'other']) { //for each possible site
         let link = details[`${i}URL`]; //find the link provided by the user
         if (typeof link == 'string' && link.length > 0 && link.length <= 100) //if a link was provided for this site
             links[i] = details[`${i}URL`]; //store it

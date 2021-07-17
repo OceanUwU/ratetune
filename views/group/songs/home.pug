@@ -68,15 +68,10 @@ block content
 
         .form-group
             label Song links (optional)
-            .input-group
-                .input-group-prepend: .input-group-text: img(src="/spotify.png" width=20)
-                input.form-control(type="text" name="spotifyURL" placeholder="Spotify link" maxlength=100)
-            .input-group
-                .input-group-prepend: .input-group-text: img(src="/youtube.png" width=20)
-                input.form-control(type="text" name="youtubeURL" placeholder="Youtube link" maxlength=100)
-            .input-group
-                .input-group-prepend: .input-group-text: img(src="/soundcloud.png" width=20)
-                input.form-control(type="text" name="soundcloudURL" placeholder="Soundcloud link" maxlength=100)
+            each i in ['Spotify', 'YouTube', 'SoundCloud', 'Other']
+                .input-group
+                    .input-group-prepend: .input-group-text: img(src=`/${i.toLowerCase()}.png` width=20)
+                    input.form-control(type="text" name=`${i.toLowerCase()}URL` placeholder=`${i} link` maxlength=100)
         
         .form-group
             label Note (optional)
