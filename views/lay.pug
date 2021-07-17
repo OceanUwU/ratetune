@@ -21,7 +21,7 @@ html
             div.collapse.navbar-collapse#navbarSupportedContent
                 ul.navbar-nav.mr-auto
                     li.nav-item: a.nav-link(href="https://github.com/OceanUwU/ratetune"): img(src="/github.png" height="24")
-                    li.nav-item: a.nav-link(href="/groups") Groups
+                    li.nav-item: a.nav-link(href="/groups/") Groups
                 if (req.user != undefined)
                     button.btn.btn-outline-light.dropdown-toggle(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 4px 8px")
                         img.rounded.border.border-dark(src=req.user.avatarURL+"?size=20&nt" style="margin-top:-3px")
