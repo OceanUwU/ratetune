@@ -1,4 +1,4 @@
-# open-source-stories
+# ratetune
 
 ## setup
 1. `npm ci` or `npm install`
